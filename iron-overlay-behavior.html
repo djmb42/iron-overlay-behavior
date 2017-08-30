@@ -181,7 +181,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     },
 
     detached: function() {
-      Polymer.dom(this).unobserveNodes(this._observer);
+      if (this._observer) {
+        Polymer.dom(this).unobserveNodes(this._observer);
+      }
       this._observer = null;
       if (this.__raf) {
         window.cancelAnimationFrame(this.__raf);
